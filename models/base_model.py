@@ -60,6 +60,7 @@ class BaseModel:
         return my_dict
 
     def delete(self):
+
         """Delete the current instance from storage."""
         models.storage.delete(self)
 
@@ -68,3 +69,7 @@ class BaseModel:
         d = self.__dict__.copy()
         d.pop("_sa_instance_state", None)
         return "[{}] ({}) {}".format(type(self).__name__, self.id, d)
+
+        """delete the current instance from the storage"""
+        models.storage.delete(self)
+

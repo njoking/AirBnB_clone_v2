@@ -10,6 +10,7 @@ from sqlalchemy.orm import relationship
 class Amenity(BaseModel, Base):
     """Represents an Amenity for a MySQL database.
 
+
     Inherits from SQLAlchemy Base and links to the MySQL table amenities.
 
     Attributes:
@@ -21,3 +22,8 @@ class Amenity(BaseModel, Base):
     name = Column(String(128), nullable=False)
     place_amenities = relationship("Place", secondary="place_amenity",
                                    viewonly=False)
+
+    def __init__(self, *args, **kwargs):
+        """initializes Amenity"""
+        super().__init__(*args, **kwargs)
+

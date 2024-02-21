@@ -10,6 +10,7 @@ from sqlalchemy.orm import relationship
 class User(BaseModel, Base):
     """Represents a user for a MySQL database.
 
+<<<<<<< HEAD
     Inherits from SQLAlchemy Base and links to the MySQL table users.
 
     Attributes:
@@ -28,3 +29,8 @@ class User(BaseModel, Base):
     last_name = Column(String(128))
     places = relationship("Place", backref="user", cascade="delete")
     reviews = relationship("Review", backref="user", cascade="delete")
+
+    def __init__(self, *args, **kwargs):
+        """initializes user"""
+        super().__init__(*args, **kwargs)
+

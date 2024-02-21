@@ -11,6 +11,7 @@ from sqlalchemy.orm import relationship
 class City(BaseModel, Base):
     """Represents a city for a MySQL database.
 
+<<<<<<< HEAD
     Inherits from SQLAlchemy Base and links to the MySQL table cities.
 
     Attributes:
@@ -22,3 +23,8 @@ class City(BaseModel, Base):
     name = Column(String(128), nullable=False)
     state_id = Column(String(60), ForeignKey("states.id"), nullable=False)
     places = relationship("Place", backref="cities", cascade="delete")
+
+    def __init__(self, *args, **kwargs):
+        """initializes city"""
+        super().__init__(*args, **kwargs)
+
