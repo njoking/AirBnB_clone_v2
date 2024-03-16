@@ -1,22 +1,23 @@
 #!/usr/bin/python3
 """
-starts a Flask web application
+a script that starts a Flask web application that displays
+“HBNB” if the URL is /hbnb
 """
-
 from flask import Flask
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def index():
-    """returns Hello HBNB!"""
+def hello_world():
+    """prints Hello HBNB!"""
     return 'Hello HBNB!'
 
 
-@app.route('/hbnb', strict_slashes=False)
+@app.route('/hbnb')
 def hbnb():
-    """returns HBNB"""
+    """prints HBNB"""
     return 'HBNB'
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5000')
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
