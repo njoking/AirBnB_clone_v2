@@ -26,4 +26,8 @@ def teardown(exc):
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     app.run(host="0.0.0.0")
+=======
+    app.run(host="0.0.0.0")
+>>>>>>> 371a3db70389cca8ed8f5412117574ab86462a9d

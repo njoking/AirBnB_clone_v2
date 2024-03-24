@@ -1,22 +1,30 @@
 #!/usr/bin/python3
-"""This module defines a class to manage file storage for hbnb clone"""
-from flask import Flask, render_template
+"""Starts a Flask web application.
+
+displaying a list of states from a database.
+"""
 from models import storage
+from flask import Flask
+from flask import render_template
+
 app = Flask(__name__)
 
 
+@app.route("/states_list", strict_slashes=False)
+def states_list():
+    """
+    Renders HTML page with list of states from storage
+    """
+    states = storage.all("State")
+    return render_template("7-states_list.html", states=states)
+
+
 @app.teardown_appcontext
-def teardown_db(_):
-    """Close storage."""
+def teardown(exc):
+    """Closes database connection.
+    Main point of entry."""
     storage.close()
 
 
-@app.route('/states_list', strict_slashes=False)
-def states_list():
-    """Display a HTML page."""
-    states = storage.all('State')
-    return render_template('7-states_list.html', states=states)
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
